@@ -1,0 +1,19 @@
+
+Boot to xorg window:
+# Edit the gdm config to boot xorg as default.
+sudo vim /etc/gdm3/custom.conf
+#Set "waylandEnable" to false
+WaylandEnable=false
+# Save the config
+reboot 
+
+
+Enable vino server:
+
+sudo apt update
+sudo apt install vino
+export DISPLAY=:0
+gsettings set org.gnome.Vino enabled true
+gsettings set org.gnome.Vino prompt-enabled false
+gsettings set org.gnome.Vino require-encryption false
+nohup /usr/lib/vino/vino-server & 
