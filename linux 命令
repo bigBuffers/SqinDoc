@@ -1,0 +1,31 @@
+21 压缩和解压：tar
+#打包test目录为test.tar.gz文件，-z表示用gzip压缩
+tar -zcvf test.tar.gz ./test
+#解压test.tar.gz文件
+tar -zxvf test.tar.gz
+
+22 改变文件或目录的拥有者和组：chown
+#变更文件desc.txt的拥有者为nginx，用户组为nginx
+chown nginx:nginx desc.txt
+#变更test及目录下所有文件的拥有者为nginx，用户组为nginx
+chown -R nginx:nginx test
+
+23 改变文件或目录的访问权限：chmod
+#权限范围：u(拥有者)g(郡组)o(其它用户)， 权限代号：r(读权限/4)w(写权限/2)x(执行权限/1)
+#给文件拥有者增加test.sh的执行权限
+chmod u+x test.sh
+#给文件拥有者增加test目录及其下所有文件的执行权限
+chmod u+x -R test
+
+25 关机或重启：shutdown
+#立刻关机
+shutdown -h now
+#60秒后重启
+shutdown -r -t 60
+
+12 搜索文件：find
+#在opt目录下查找以.txt结尾的文件
+find /opt -name '*.txt'
+13 创建链接文件：ln
+#创建目录/opt/test的符号链接
+ln -s /opt/test ./link2test
