@@ -29,3 +29,21 @@ find /opt -name '*.txt'
 13 创建链接文件：ln
 #创建目录/opt/test的符号链接
 ln -s /opt/test ./link2test
+
+环境变量：
+使用env或printenv命令查看当前shell中所定义的全部环境变量
+
+要查看其他进程的环境变量，可以使用如下命令：
+cat /proc/$PID/environ
+
+要想生成一份易读的报表，可以将cat命令的输出通过管道传给tr，将其中的\0替换成\n：
+$ cat /proc/12501/environ  | tr '\0' '\n'
+
+如果需要在PATH中添加一条新路径，可以使用如下命令：
+export PATH="$PATH:/home/user/bin"
+
+可以用下面的方法获得变量值的长度：
+length=${#var}
+
+可以通过环境变量SHELL获知当前使用的是哪种shell：
+echo $SHELL
