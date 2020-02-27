@@ -47,3 +47,7 @@ length=${#var}
 
 可以通过环境变量SHELL获知当前使用的是哪种shell：
 echo $SHELL
+
+假设你要用repeat()从Internet上下载一个暂时不可用的文件，不过这个文件只需要等一会就能下载。一种方法如下：
+repeat wget -c http://www.example.com/software-0.1.tar.gz
+repeat() { while :; do $@ && return; sleep 30; done }
