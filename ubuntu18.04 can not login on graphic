@@ -1,0 +1,59 @@
+I have been through this problem multiple times and it has been a different issue each time. One of the following issues could have caused your problem and you could use the command line interface by using Ctrl+Alt+F1 (Replace F1 with F2,F3.... if your tty1 is occupied) to try the following solutions
+
+NVIDIA drivers missing or broken?
+Run nvidia-smi to access the NVIDIA system management interface. The output should be something of this sort.
+Mon Sep 17 14:58:26 2018       
++-----------------------------------------------------------------------------+ 
+| NVIDIA-SMI 390.87                 Driver Version: 390.87                    | 
+|-------------------------------+----------------------+----------------------+ 
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC | 
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. | 
+|===============================+======================+======================| 
+|   0  GeForce GT 720      Off  | 00000000:01:00.0 N/A |               N/A    | 
+| 19%   35C    P8    N/A /  N/A |    543MiB /   980MiB |     N/A Default      |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+ 
+| Processes:                                                       GPU Memory | 
+|  GPU       PID   Type   Process name                        Usage           | 
+|=============================================================================| 
+|    0                    Not Supported                                       |
++-----------------------------------------------------------------------------+
+If you're not able to access it, there is probably some issue with your graphic drivers.
+
+In that case, you should be able to find out the name of your graphics card using lspci | grep VGA.
+You can find out the compatible drivers for your graphics card using the link.
+(Try without this stepand maybe then with this step if there was no success). Remove the existing broken drivers using sudo apt-get purge nvidia*.
+Install the drivers using
+
+sudo add-apt-repository ppa:graphics-drivers
+
+sudo apt-get update
+
+sudo apt-get install nvidia-390 (Or whatever the compatible driver is for your graphics card)
+
+Try a restart using systemctl reboot -i and hope your login loop is fixed.
+
+Is your HOME your HOME?
+Check the owner of your home directory using ls -l /home
+If you don not own your home directory, change it using sudo chown $USER:$USER $HOME
+Try a restart using systemctl reboot -i and hope your login loop is fixed.
+Do you own your .Xauthority?
+Check the owner of your home directory using ls -l ~/.Xauthority
+If you don't own your .Xauthority, change it using sudo chown $USER:$USER ~/.Xauthority
+If you do, move your .Xauthority file using sudo mv ~/.Xauthority ~/.Xauthority.bak
+Try a restart using systemctl reboot -i and hope your login loop is fixed.
+You might need to do the same thing on .ICEauthority.
+Is your /tmp right?
+Run ls -ld /tmp and make sure the permissions are exactly drwxrwxrwt. The output should be of this sort
+drwxrwxrwt 27 root root 36864 Sep 17 17:15 /tmp
+
+If not, run sudo chmod a+wt /tmp
+Try a restart using systemctl reboot -i and hope your login loop is fixed.
+Maybe lightdm is your problem?
+Reconfigure your display manager using dpkg-reconfigure lightdm and try out other display managers (gdm3,lightdm,) that are available. Maybe this will you give you enough clues to move forward.
+If none of them help,try installing sddm using sudo apt-get install sddm
+for one final try. reconfigure display to sddm.
+If none of the above solutions worked, you can try re-installing ubuntu.
+
+P.S: This is a compilation of answers from the sources I refered to, some from this post as well.
