@@ -1,0 +1,11 @@
+过滤 map.ini 中的section [] , 直接创建新的文件
+grep "[\[a-zA-Z1-9\]]" superl2map.ini | tr -d '[]' | tr 'A-Z' 'a-z' | xargs -I {} cp map_bigloop.json map_{}.json
+
+通过查找，文件后直接修改文件
+find . -name BUILD -print0 | xargs -I {} -0 sed -i 's/cc_library/dw_cc_library/g' {}
+find . -name BUILD -print0 | xargs -I {} -0 sed -i 's/\@rules_cc\/\//\/\/bazel\/build_rules\//g' {}
+
+通过过滤指定字段找到文件， 直接修改文件
+grep '\-soname' . -r | grep -v cmake | cut -d : -f1 | sort | uniq | xargs -I {}  sed -i 's/cc_library/dw_cc_library/g' {}
+grep '\-soname' . -r | grep -v cmake | cut -d : -f1 | sort | uniq | xargs -I {} sed -i 's/\@rules_cc\/\//\/\/bazel\/build_rules\//g' {}
+
