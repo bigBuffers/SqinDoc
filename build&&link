@@ -1,3 +1,6 @@
+查看一个.o是否是一个PIC file
+readelf --relocs foo.o | egrep '(GOT|PLT|JU?MP_SLOT)'
+
 objcopy -I binary -O elf32-i386 -B i386 sqin.png simpleSection.o
 
 objdump -h simpleSection.o
