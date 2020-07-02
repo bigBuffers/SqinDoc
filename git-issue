@@ -8,3 +8,6 @@ From ssh://baidu.com/baiduproject
 git gc --prune=now
 git remote prune origin
 git pull
+
+git清理
+git -c lfs.fetchrecentrefsdays=0 -c lfs.fetchrecentcommitsdays=0 -c lfs.fetchrecentremoterefs=0 -c lfs.pruneoffsetdays=0 lfs prune --verbose
