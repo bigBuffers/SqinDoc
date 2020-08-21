@@ -9,3 +9,5 @@ find . -name BUILD -print0 | xargs -I {} -0 sed -i 's/\@rules_cc\/\//\/\/bazel\/
 grep '\-soname' . -r | grep -v cmake | cut -d : -f1 | sort | uniq | xargs -I {}  sed -i 's/cc_library/dw_cc_library/g' {}
 grep '\-soname' . -r | grep -v cmake | cut -d : -f1 | sort | uniq | xargs -I {} sed -i 's/\@rules_cc\/\//\/\/bazel\/build_rules\//g' {}
 
+通过过滤指定文件，查找内容
+find . -name *.hpp -print0 | xargs -I {} -0 grep "CHECK_DW_ERROR_MSG" -n --with-filename {}
