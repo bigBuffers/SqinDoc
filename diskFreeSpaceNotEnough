@@ -1,0 +1,11 @@
+You can do some things to get more space in your devide:
+
+1  Clean cache: sudo apt-get clean
+2  Remove old kernels: sudo apt-get autoremove --purge
+3  Remove packages no needed anymore: sudo apt-get autoremove
+
+Also, you can use this to get rid of older lfs files in your local repo copy that are being tracked unnecessarily: 
+
+git -c lfs.fetchrecentrefsdays=0 -c lfs.fetchrecentcommitsdays=0 -c lfs.fetchrecentremoterefs=0 -c lfs.pruneoffsetdays=0 lfs prune --verbose
+
+This will get you back a reasonable amount of space (edited) 
