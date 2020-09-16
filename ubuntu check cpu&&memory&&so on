@@ -1,0 +1,85 @@
+查看 CPU：
+
+cat /proc/cpuinfo
+该命令可以查看系统CPU有多少个核，频率，特性等等。
+
+查看 cpu 内核频率
+
+cat /proc/cpuinfo |grep MHz|uniq
+//双核四线程的 cpu 当前的数据
+cpu MHz     : 801.406
+cpu MHz     : 799.878
+cpu MHz     : 799.968
+cpu MHz     : 815.332
+
+查看内存：
+cat /proc/meminfo
+这个命令可以查看当前内存大小，已用空间等等
+
+要查看内存型号、频率，使用命令(使用root才行)：
+sudo dmidecode -t memory
+输出示例：
+steven@Debian:~$ sudo dmidecode -t memory
+# dmidecode 2.12
+# SMBIOS entry point at 0xc6e26000
+SMBIOS 2.6 present.
+
+Handle 0x001B, DMI type 16, 15 bytes
+Physical Memory Array
+    Location: System Board Or Motherboard
+    Use: System Memory
+    Error Correction Type: None
+    Maximum Capacity: 32 GB
+    Error Information Handle: Not Provided
+    Number Of Devices: 4
+
+Handle 0x001C, DMI type 17, 28 bytes
+Memory Device
+    Array Handle: 0x001B
+    Error Information Handle: Not Provided
+    Total Width: 64 bits
+    Data Width: 64 bits
+    Size: 4096 MB
+    Form Factor: SODIMM
+    Set: None
+    Locator: ChannelA-DIMM0
+    Bank Locator: BANK 0
+    Type: DDR3
+    Type Detail: Synchronous
+    Speed: 1333 MHz
+    Manufacturer: Samsung
+    Serial Number: 88640AAE
+    Asset Tag: 9876543210
+    Part Number: M471B5273DH0-CH9 
+    Rank: Unknown
+
+...
+
+查看系统运行时间：
+cat /proc/uptime
+1123.01 3831.08 //大概是 18 分钟多一些 ，给出的结果是单位为秒
+
+查看内核IO地址映射：
+cat /proc/iomem
+
+查看内核版本：
+cat /proc/version
+
+查看内核函数：
+cat /proc/kallsyms
+
+查看系统启动参数：
+cat /proc/cmdline
+
+磁盘信息(这个文件一般人看不懂，有工具就是分析这个文件得到磁盘性能信息的)：
+cat /proc/diskstats
+
+查看中断：
+cat /proc/interrupts
+
+清空内存：
+echo 2 > /proc/sys/vm/overcommit_memory
+
+
+
+
