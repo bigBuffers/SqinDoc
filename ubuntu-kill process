@@ -1,0 +1,16 @@
+4种kill某个用户所有进程的方法
+
+1. pkill方式
+
+# pkill -u ttlsa
+2. killall方式
+
+# killall -u ttlsa
+3. ps方式
+ps列出ttlsa的pid，然后依次kill掉，比较繁琐.
+
+# ps -ef | grep ttlsa | awk '{ print $2 }' | sudo xargs kill -9
+4. pgrep方式
+pgrep -u参数查出用户的所有pid，然后依次kill
+
+# pgrep -u ttlsa | sudo xargs kill -9
