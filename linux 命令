@@ -54,3 +54,6 @@ repeat() { while :; do $@ && return; sleep 30; done }
 
 查看gcc文档，过滤执行行数
 man gcc | awk 'NR==6840,NR==6860'
+
+查看系统的名称 ubuntu/redhat
+head -n 1 /etc/issue
