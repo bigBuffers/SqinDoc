@@ -8,6 +8,7 @@ find . -name BUILD -print0 | xargs -I {} -0 sed -i 's/\@rules_cc\/\//\/\/bazel\/
 通过过滤指定字段找到文件， 直接修改文件
 grep '\-soname' . -r | grep -v cmake | cut -d : -f1 | sort | uniq | xargs -I {}  sed -i 's/cc_library/dw_cc_library/g' {}
 grep '\-soname' . -r | grep -v cmake | cut -d : -f1 | sort | uniq | xargs -I {} sed -i 's/\@rules_cc\/\//\/\/bazel\/build_rules\//g' {}
+grep "dwframework/node/Node.hpp" . -rn | cut -d : -f1 | sort | xargs -I {}  sed -i 's/dwframework\/node\/Node.hpp/dwframework\/base\/node\/Node.hpp/g' {}
 
 通过过滤指定文件，查找内容
 find . -name *.hpp -print0 | xargs -I {} -0 grep "CHECK_DW_ERROR_MSG" -n --with-filename {}
