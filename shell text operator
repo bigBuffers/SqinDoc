@@ -12,17 +12,13 @@ grep "dwframework/node/Node.hpp" . -rn | cut -d : -f1 | sort | xargs -I {}  sed 
 
 通过匹配夫批量修改
 grep "dwframework/" . -rn | grep -v "nodes" | cut -d : -f1 | sort | uniq | xargs -I {}  sed -i 's/dwframework\//dwframework\/base\//g' {}
+grep "/base/base/" . -rn | cut -d : -f1 | sort | xargs -I {}  sed -i 's/\/base\/base\//\/base\//g' {}
+nodes folder need revert:
+grep "dwframework/base/nodes/" . -rn | cut -d : -f1 | sort | xargs -I {}  sed -i 's/dwframework\/base\/nodes\//dwframework\/nodes\//g' {}
+
 
 node folder:
 grep "dwframework/Types.hpp" . -rn | cut -d : -f1 | sort | xargs -I {}  sed -i 's/dwframework\/Types.hpp/dwframework\/base\/Types.hpp/g' {}
-grep "dwframework/logger/Logger.hpp" . -rn | cut -d : -f1 | sort | xargs -I {}  sed -i 's/dwframework\/logger\/Logger.hpp/dwframework\/base\/logger\/Logger.hpp/g' {}
-grep "dwframework/node/SimpleNode.hpp" . -rn | cut -d : -f1 | sort | xargs -I {}  sed -i 's/dwframework\/node\/SimpleNode.hpp/dwframework\/base\/node\/SimpleNode.hpp/g' {}
-grep "dwframework/node/SimpleNode.hpp" . -rn | cut -d : -f1 | sort | xargs -I {}  sed -i 's/dwframework\/node\/SimpleNode.hpp/dwframework\/base\/node\/SimpleNode.hpp/g' {}
-
-
-grep "dwframework/DetectorTypes.hpp" . -rn | cut -d : -f1 | sort | xargs -I {}  sed -i 's/dwframework\/DetectorTypes.hpp/dwframework\/base\/DetectorTypes.hpp/g' {}
-grep "dwframework/DetectorTypes.hpp" . -rn | cut -d : -f1 | sort | xargs -I {}  sed -i 's/dwframework\/DetectorTypes.hpp/dwframework\/base\/DetectorTypes.hpp/g' {}
-
 
 
 通过过滤指定文件，查找内容
