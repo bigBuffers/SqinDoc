@@ -1,3 +1,9 @@
+Ubuntu 18.04
+https://websiteforstudents.com/access-ubuntu-18-04-lts-beta-desktop-via-vnc-from-windows-machines/
+安装dconf-editor: sudo apt install dconf-editor
+打开dconf-editor，依次展开org->gnome->desktop->remote-access
+将 requre-encryption 设为 False
+
 
 Boot to xorg window:
 # Edit the gdm config to boot xorg as default.
