@@ -1,0 +1,87 @@
+查看一个.o是否是一个PIC file
+readelf --relocs foo.o | egrep '(GOT|PLT|JU?MP_SLOT)'
+
+objcopy -I binary -O elf32-i386 -B i386 sqin.png simpleSection.o
+
+objdump -h simpleSection.o
+
+查看目标文件的size
+size simpleSection.o
+objdump -s -d simpleSection.o
+
+objdump -s -d simpleSection.o
+objdump -h simpleSection.o
+
+gcc -c simpleSection.c
+objdump -h simpleSection.o
+objdump -x -s -d simpleSection.o
+
+编译目标文件
+gcc -c simpleSection.c
+objdump -h simpleSection.o
+查看完整的目标文件信息
+objdump -x -s -h simpleSection.o
+
+将图片sqin.png直接打入目标文件
+objcopy -I binary -O elf32-i386 -B i386 sqin.png simpleSection.o
+
+使用readelf查看目标文件头
+readelf -h simpleSection.o
+
+查看可执行文件的外部符号引用
+nm -C Loader | grep CreateContext
+使用objdump查看符号表
+readelf -s out
+objdump -t simpleSection.o
+
+查看重定位表
+objdump -r a.o
+
+使用NM查看符号表
+sqin@sqin-pc:nm out
+0000000000000000 T func1
+0000000000000000 D global_init_var
+0000000000000004 C global_uninit_var
+0000000000000004 C global_uninit_var_qin
+0000000000000022 T main
+                 U printf
+0000000000000004 d static_var.1841
+0000000000000000 b static_var2.1842
+
+
+c++ 符号表经过修改，可以用过命令反解析
+sqin@sqin-pc:c++filt _ZZ4mainE11static_var2
+main::static_var2
+
+强符号弱符号
+__attribute__ ((weakref)) weak2 = 2;
+__attribute__ ((weakref)) void foo();
+
+查看core dump
+是否有符号表
+sqin@sqin-pc:objdump -x core | tail
+
+连接器ld生产可执行文件
+ld a.o b.o -e main -o ab
+
+gcc 默认把所有未初始化的全局变量以COMMON块的形式处理，
+增加选项：-fno-common 后可以取消
+
+查看lib库中包含的.o文件
+ar -t libc.a
+
+查看执行程序的依赖库
+readelf -a Loader | grep library
+find . -name BUILD | xargs grep nvmedia -w
+
+查看动态库必需依赖的动态库
+readelf -d libdwframework.so | grep 'NEEDED'
+objdump -x a.out |grep NEEDED
+
+先生成一个libbar.so，通过-Wl,-soname指定soname为libbar.so.1。
+g++ -fPIC -shared -Wl,-soname,libbar.so.1 -o libbar.so.1.1.0
+
+RR2.0 dependency library
+https://docs.google.com/spreadsheets/d/1IC0QY9MzRwVJiknwdepngIjn0B0SazvQiernaFfIfwk/edit?usp=sharing
+
+-fvisibility=hidden -fvisibility-inlines-hidden -ffunction-sections -fdata-sections
