@@ -1,0 +1,25 @@
+sqin@sqin-pc:/mnt/disk/workspace/sdk$ source scripts/envsetup.sh 
+this command export the dazel function and export -f dazel,
+
+# Define functions
+function dazel {
+   $NV_AV_TOP/tools/dazel/dazel.py "$@"
+}
+
+if $_IS_BASH; then
+  # Exporting functions is a bash only feature
+  export -f dazel
+  export -f dazel-exec
+fi
+
+after this we can direct use dazel command, it is just a shell function.
+which will excute the follow py script.
+
+dazel command entrance:
+/mnt/disk/workspace/sdk/tools/dazel/dazel.py
+
+the dazel use http remote-cache , all the dependency start from 
+this file which contain all the dependency repo.
+/mnt/disk/workspace/sdk/WORKSPACE
+
+eg: /mnt/disk/workspace/sdk/bazel/remote_archives/defs.bzl 
