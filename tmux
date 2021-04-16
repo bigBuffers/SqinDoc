@@ -1,3 +1,8 @@
+如何在tmux中scrollback page
+1.linux普通模式翻屏（翻页）：shift+PgUp或者shift+PgDn
+2.tmux模型下翻屏（翻页）：C-b pageup/pagedown
+3 按q退出
+
 Tmux 重要概念
 
 第一，Tmux中，千万不要去背和记长度超过1个字母的命令！所有都按照自己的顺手程度，在.tmux.conf配置文件中绑定快捷键，甚至窗口改变大小的命令也不用记，只需改为用鼠标调整即可。
