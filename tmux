@@ -3,12 +3,13 @@
 2.tmux模型下翻屏（翻页）：C-b pageup/pagedown
 3 按q退出
 
+修改tmux scrollback 缓存大小命令
+1 open ～/.tmux.conf
+2 set-option -g history-limit 3000
+
 Tmux 重要概念
-
 第一，Tmux中，千万不要去背和记长度超过1个字母的命令！所有都按照自己的顺手程度，在.tmux.conf配置文件中绑定快捷键，甚至窗口改变大小的命令也不用记，只需改为用鼠标调整即可。
-
 第二，在Tmux逻辑中，分清楚Server > Session > Window > Pane这个大小和层级顺序是极其重要的，直接关系到工作效率：
-
     Server：是整个tmux的后台服务。有时候更改配置不生效，就要使用tmux kill-server来重启tmux。
     Session：是tmux的所有会话。我之前就错把这个session当成窗口用，造成了很多不便里。一把只要保存一个session就足够了。
     Window：相当于一个工作区，包含很多分屏，可以针对每种任务分一个Window。如下载一个Window，编程一个window。
