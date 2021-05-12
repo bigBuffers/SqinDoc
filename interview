@@ -1,0 +1,189 @@
+0 
+int const * a 和 int * const a之间的区别
+
+typedef int* INT
+const INT m_data{xxx}
+
+1 关键字 volatile 是什么意思？可以使用 volatile 来确保线程安全吗？在什么情况下可以？
+
+2 编写一个函数以对32位 int 中的“ 1”位进行计数。如何进行优化？
+
+3 局部（自动）变量，静态变量和全局变量之间的区别
+
+4 静态库和共享库之间的区别和联系。
+
+5 绘制目标文件内存中所有段的分配顺序
+
+6 堆和栈之间的区别。如何在每个内存上分配内存？
+
+7 下面的2之间有区别
+int a [300000];
+void main()
+{
+    a[0] = 0;
+}
+
+int b [300000] = {1,2,3,4,5,6};
+void main()
+{
+    b[0] = 0;
+}
+
+8 什么是字节对齐？
+struct A
+{
+    int a:5;
+    int b:5;
+};
+
+int main(void)
+{
+    //'0'= 0011 0000   'l'= 0011 0001
+    char str[100] =“” 0134324324afsadfsdlfjlsdjfl“”;
+    struct A d;
+    memcpy(＆d, str, sizeof(A));
+    std::cout << d.a << std::endl;
+    std::cout << d.b << std::endl;
+    return 0;
+}
+
+9  memcpy 和 memmove 之间的区别，实现？
+
+C++11 
+0 什么是内联函数 inline，为什么要使用？内联函数和宏函数之间的区别？如果添加内联，它将强制变为内联？
+
+1 指针和引用之间的区别？
+
+2 上面的后续问题：什么是赋值运算符，什么时候调用复制构造函数，什么时候调用赋值运算符
+
+3 “什么是多态性，为什么有用？
+
+4 什么是虚函数？ 纯虚函数？ 虚拟析构函数有什么作用？ 如何实施
+
+5 override / final 的作用
+
+6 我可以在函数中返回引用吗？有什么限制？
+
+7 什么是函数对象？ lambda 是否是一个函数对象，它们是什么关系？
+
+8 C++ 常用智能指针， C ++ shared_ptr 实现？
+
+9 浅拷贝和深拷贝之间的区别， std::move 是用来做什么的，目的是什么？
+
+10 dynamic_cast，static_cast，const_cast，reinterpret_cast 之间的区别
+
+11 右值引用, 完美转发
+
+12 析构函数是否可以抛出异常？
+
+多线程
+1 生产者 消费者
+
+2 线程和进程之间的区别？ 对于并行工作负载，使用多线程和多处理的优缺点
+
+3 如何实现单例模式？ 如果使用双重检查NULL == ptr，为什么要使用双重检查 
+
+4 什么是死锁？ 举个例子？
+
+操作系统
+1 进程和线程之间有什么区别？
+
+2 什么是信号量？ 它的用途是什么？如何使用信号量实现生产者-消费者模式？
+
+3 为何需要虚拟内存，物理内力，内存布局
+
+4 什么是守护进程，孤儿和僵尸进程
+
+5 tcp跟udp的区别，tcp三次握手/四次挥手，tcp的实现原理（状态机）
+
+6 两台pc，第一次通信，中间接交换机/路由器，封包流程
+
+数据结构
+6 简单介绍下 STL 中的容器 vector list map set multimap multiset
+
+7 map 与 unorder_map 的区别
+
+8 class myString
+{
+public:
+	myString(const myString& src)
+	{
+		//todo impelment
+	}
+private:
+	char* buffer{nullptr};
+};
+
+
+链表
+8.0 链表逆序
+List reverse, input a Single direction linked list, reverse the list and return.
+type struct List
+{
+	int          m_nValue;
+	struct List* m_pNext;
+}myList;
+
+myList* ReverseList(myList* head)
+{
+	//todo
+}
+
+before:
+one -> two  -> three -> four -> five
+after:
+one <- two  <- three <- four <- five
+
+8.1链表中倒数第k个节点
+
+8.2 求两个单链表的第一个公共节点
+
+树
+8.3 树的镜像，是否递归
+请完成一个函数，输入一棵二叉树，该函数输出它的镜像。
+struct BinaryTreeNode
+{
+	int            m_nValue;
+	BinaryTreeNode m_pLeft;
+	BinaryTreeNode m_pRight;
+};
+
+
+8.4 连续子数组的最大和
+输入一个整型数组，数组中有正数也有负数。数组中的一个或连续多个整数组成一个子数组。
+求所有子数组的和的最大值。要求时间复杂度位O(n).
+
+8.5 从arr[1, n]这n个数中，找出最大的k个数，这就是经典的TopK问题。
+TopK，不难；其思路优化过程，不简单：
+1 全局排序，O(n*lg(n))
+2 局部排序，只排序TopK个数，O(n*k)
+3 堆，TopK个数也不排序了，O(n*lg(k))
+4 分治法，每个分支“都要”递归，例如：快速排序，O(n*lg(n))
+5 减治法，“只要”递归一个分支，例如：二分查找O(lg(n))，随机选择O(n)
+TopK的另一个解法：随机选择+partition
+知其然，知其所以然。
+思路比结论重要。
+
+
+动态规划/贪婪算法
+9.0 给你一个长度为n的绳子，请把绳子剪成m段(m n都是整数， n>1 并且 m>1)，每段绳子的长度记为k[0], k[1], k[2], ... , k[m] . 请问 k[0]xk[1]x...xk[m]
+可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2 3 3的三段，此时得到的最大乘积时18.
+
+AV相关
+讲下自动驾驶的相关模块，毫米波雷达，激光雷达等传感器原理，跟踪算法，以及多传感器融合软件算法，以及负责的事情
+
+图像的点的采集，如何提取目标信息
+
+高斯模型
+概率模型
+多源传感器进行匹配，通过概率进行计算距离，
+卡尔曼滤波对构建运动群模型，
+数学推导出来的东西，简化
+
+证明模型更好
+
+
+
+
+
+
