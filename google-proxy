@@ -1,0 +1,14 @@
+1 ubuntu
+system Settings->Network->Network Proxy->Automatic , type url: http://cnproxy/cnproxy.pac
+
+2 windows10
+
+2.1Click Start icon 
+2.2Type Internet Options and press Enter 
+2.3Select Connections, and click LAN Settings 
+2.4Check Use Automatic configuration script and type http://cnproxy/cnproxy.pac and click OK 
+
+Web browser
+
+IE, Chrome, Safari use system proxy setting.
+If you use Firefox, please see Proxy Setting on Firefox. 
