@@ -1,0 +1,9 @@
+1 sudo apt install -y git vim curl wget openssh-server openssl libssl-dev
+
+2 
+git config --global nvidia.username sqin
+git config --global user.name ""
+git config --global color.ui auto
+git config --global core.editor "vim"
+
+3 git clone "ssh://${USER}@git-av.nvidia.com:12013/ndas" && scp -p -P 12013 ${USER}@git-av.nvidia.com:hooks/commit-msg "ndas/.git/hooks/"
