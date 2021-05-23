@@ -1,0 +1,6 @@
+1 download cisco vpn from : http://ngvpn.nvidia.com
+2 cd anyconnect-linux64-4.7.04056/vpn; sudo ./vpn_install.sh
+3 start up the vpn
+4 add server ip : 103.74.125.164 : 8443 , the default port is 8443。
+5 cancel Block connections to untrusted servers to connect to thes servers。
+6 done
