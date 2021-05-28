@@ -1,12 +1,9 @@
 
-sudo usermod -g root sqin
+1 添加用户
+sudo adduser username
 
-将一个用户添加到用户组中，千万不能直接用： 
-usermod -G groupA 
-
-这样做会使你离开其他用户组，仅仅做为 这个用户组 groupA 的成员。 
-应该用 加上 -a 选项： 
-usermod -a -G groupA user
+2 如果希望新用户能够执行管理任务，则需要将该用户添加到sudo组。
+sudo usermod -aG sudo/... username
 
 (FC4: usermod -G groupA,groupB,groupC user)
 -a 代表 append， 也就是 将自己添加到 用户组groupA 中，而不必离开 其他用户组。 
