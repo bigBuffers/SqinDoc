@@ -1,2 +1,6 @@
 1 download the k-vim
 
+2 install YCM-Generator
+For vim-plug users, add Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'} to your vimrc.
+
+3
