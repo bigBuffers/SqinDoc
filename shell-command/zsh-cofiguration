@@ -1,0 +1,10 @@
+1  sudo apt-get install zsh
+2  install the oh-myzsh
+3  you must want to use the shell plugins
+https://travis.media/top-10-oh-my-zsh-plugins-for-productive-developers/#20210719-history
+4  the history search is usefull
+https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history
+5  the autojump is usefull
+https://github.com/wting/autojump
+6  zsh-syntax-highlighting is usefull
+https://github.com/zsh-users/zsh-syntax-highlighting
