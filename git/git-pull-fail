@@ -1,0 +1,13 @@
+Error
+git pull : unable to update local ref
+拉代码报了更新锁定：
+\error: cannot lock ref 'refs/remotes/origin/v1.0.0': is at 3cdf2617e77e93521f3fed038b4a161543131cfa but expected 0fc6b07bd33bc6c66c259cc12e87d14b5c4abeaf
+From ssh://baidu.com/baiduproject
+ ! 0fc6b07b...631e017e v1.0.0 -> origin/v1.0.0  (unable to update local ref)
+解决办法：
+git gc --prune=now
+git remote prune origin
+git pull
+
+git清理
+git -c lfs.fetchrecentrefsdays=0 -c lfs.fetchrecentcommitsdays=0 -c lfs.fetchrecentremoterefs=0 -c lfs.pruneoffsetdays=0 lfs prune --verbose
